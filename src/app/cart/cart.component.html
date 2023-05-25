@@ -1,0 +1,38 @@
+<div *ngIf="!cartDetails" class="bg-main-light w-75 mx-auto my-3 p-4 rounded-4">
+  <h5 class="display-5 text-main text-center ">Cart is empty</h5>
+
+
+</div>
+
+
+
+
+<div class="bg-main-light w-75 mx-auto my-3 p-4 rounded-4" *ngIf="cartDetails">
+  <div class="d-flex justify-content-between">
+    <h3 class="text-main display-6">Shopping Cart </h3>
+    <button class="btn m-0 p-0 text-main" (click)="removeUserCart() "> <i class="fa-regular fa-trash-can text-main fa-lg "></i> Clear </button>
+  </div>
+
+  <h4 class="h6 text-main my-3" *ngIf="cartDetails">Total Price : {{cartDetails?.totalCartPrice}} EGP</h4>
+  <div class="alert alert-danger" *ngIf="cartDetails.totalCartPrice<=0">Cart is empty</div>
+  <div class="row border-bottom gy-3 align-items-center " *ngFor="let product of cartDetails?.products" >
+    <div class="col-md-2">
+      <img [src]="product.product?.imageCover" class="w-100 my-4" alt="">
+    </div>
+    <div class="col-md-10 d-flex justify-content-between">
+      <div class="col-md-8">
+        <h6 class="my-2 text-main">{{product.product.title}}</h6>
+        <h6 class="mb-2">Price : {{product.price}} EGP</h6>
+        <button class="btn m-0 p-0" (click)="removeCartItem(product.product._id)"> <i class="fa-regular fa-trash-can text-main "></i> Remove</button>
+      </div>
+      <div class="col-md-4  my-auto">
+        <button class="btn fw-bold border-main" (click)="updateCartItem(product.product._id,product.count -1)"> - </button>
+        <span class="mx-3 text-main h5" >{{product.count}}</span>
+        <button class="btn fw-bold border-main" (click)="updateCartItem(product.product._id,product.count +1)"> + </button>
+      </div>
+    </div>
+  </div>
+  <button class="btn bg-main text-white my-3 ">
+    <a [routerLink]="['/checkout',cartDetails._id]" class="text-white"> Pay </a>
+  </button>
+</div>

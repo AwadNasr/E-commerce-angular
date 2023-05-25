@@ -1,0 +1,24 @@
+
+<div class="row align-items-center my-3">
+  <div class="col-md-4">
+    <img [src]="imageSrc?imageSrc:productDetails.imageCover" class="w-75" alt="">
+    <div class="d-flex justify-content-center align-items-center my-3" >
+      <div *ngFor="let image of productDetails.images" class="cursor-pointer">
+        <img [src]="image" class="w-75" alt="" (click)="getSrc(image)">
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h3 class="text-main fw-bold h4 my-2">{{productDetails.title}}</h3>
+    <p class="text-muted my-2">{{productDetails.description}}</p>
+    <h4 class="text-main">Brand :<span>{{productDetails.brand.name}}</span></h4>
+    <div class="d-flex align-items-center justify-content-between">
+      <span class="h6 text-muted fw-bold">{{productDetails.price}} EGP</span>
+      <div class="my-3" >
+        <i class="fas fa-star rating-color"></i>
+        <span>{{productDetails.ratingsAverage}}</span>
+      </div>
+    </div>
+    <button class="btn bg-main text-white w-100" (click)="addToCart(productDetails._id)"> Add +</button>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+
+<app-mainslider></app-mainslider>
+<h3 class="my-4 py-3 text-main display-5">Categoris</h3>
+<owl-carousel-o [options]="customOptions">
+  <ng-container *ngFor="let category of categories">
+    <ng-template carouselSlide >
+      <img height="200" [src]="category.image">
+      <h5 class="text-main fw-bold font-sm my-3">{{category.name}}</h5>
+    </ng-template>
+  </ng-container>
+</owl-carousel-o>
+
+
+
+<div class="row">
+  <div>
+    <input [(ngModel)]="search" type="text" placeholder="Search ..." class="form-control w-75 mx-auto my-4 ">
+  </div>
+  <div class="col-md-3" *ngFor="let product of products|search:search">
+    <div class="product m-3 p-3" >
+      <a [routerLink]="['/productdetails', product._id]" >
+        <img class="w-100" src="{{product.imageCover}}" alt="">
+      <h3 class="text-main fw-bold font-sm h6 my-2 ">{{product.category.name}}</h3>
+      <p class="text-muted ">{{product.title.split(" ").slice(0,2).join(' ')}}</p>
+      <div class="d-flex align-items-center justify-content-between">
+        <span class="h6 text-muted fw-bold">{{product.price}} EGP</span>
+        <div >
+          <i class="fas fa-star rating-color"></i>
+          <span>{{product.ratingsAverage}}</span>
+        </div>
+      </div>
+      </a>
+      <button class="btn bg-main text-white w-100" (click)="addToCart(product._id)"> Add +</button>
+    </div>
+  </div>
+</div>

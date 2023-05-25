@@ -1,0 +1,81 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light ">
+  <div class="container-fluid">
+  <a class="navbar-brand" >
+    <img src="./assets/freshcart-logo.svg" class="w-100" alt="">
+  </a>
+  <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavId">
+    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link " routerLink="home" routerLinkActive="text-main"  >Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="product" routerLinkActive="text-main"  >Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="category" routerLinkActive="text-main"  >Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="brand" routerLinkActive="text-main"  >Brands</a>
+      </li>
+
+    </ul>
+    <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link "  ><i  class="fab mx-2 fa-facebook "></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  ><i  class="fab mx-2 fa-twitter"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  ><i  class="fab mx-2 fa-instagram"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  ><i  class="fab mx-2 fa-tiktok"></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  ><i  class="fab mx-2 fa-linkedin"></i></a>
+      </li>
+      <li class="nav-item" *ngIf="!isLogin">
+        <a class="nav-link" routerLink="login" routerLinkActive="text-main" >LogIn</a>
+      </li>
+      <li class="nav-item" *ngIf="!isLogin">
+        <a class="nav-link" routerLink="register" routerLinkActive="text-main" >Register</a>
+      </li>
+
+      <!-- <li class="nav-item" *ngIf="isLogin">
+        <span class="nav-link text-white bg-main rounded-3 text-center meta">  Hi <span>{{userName}}</span></span>
+      </li> -->
+      <!-- <li class="nav-item" *ngIf="isLogin" (click)="logout()">
+        <a class="nav-link cursor-pointer" routerLinkActive="text-main" >Logout</a>
+      </li> -->
+
+      <li class="nav-item  position-relative" *ngIf="isLogin">
+        <a class="nav-link" routerLink="cart" routerLinkActive="text-main"  >
+          <i class="fas fa-cart-shopping text-main fa-lg"></i>
+          <span class="badge bg-main text-white position-absolute top-0 end-0">{{numCart}}</span>
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="isLogin" (click)="logout()">
+        <a ><i class="fa-solid fa-arrow-right-from-bracket text-main fa-2x cursor-pointer px-3 "></i> </a>
+      </li>
+      <!-- settings  -->
+      <li *ngIf="isLogin">
+        <div class="btn-group dropstart">
+          <button type="button" class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-gear fa-spin"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item cursor-pointer" routerLinkActive="text-main" routerLink="settings/change">Forget Password</a></li>
+            <li><a class="dropdown-item cursor-pointer" routerLinkActive="text-main" routerLink="settings/reset">Reset Password</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</nav>
+

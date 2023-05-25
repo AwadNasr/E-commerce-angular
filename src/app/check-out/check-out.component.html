@@ -1,0 +1,55 @@
+<div class="py-4">
+
+  <form class="w-75 m-auto " (ngSubmit)="handleFormCheckout(shippingAddress)" [formGroup]="shippingAddress">
+    <h2 class="display-4 text-main mb-3">shippingDetails  </h2>
+    <div class="wave-group my-3">
+      <input  type="text" class="input" formControlName="details">
+      <span class="bar"></span>
+      <label class="label">
+        <span class="label-char" style="--index: 0">D</span>
+        <span class="label-char" style="--index: 1">e</span>
+        <span class="label-char" style="--index: 2">t</span>
+        <span class="label-char" style="--index: 3">a</span>
+        <span class="label-char" style="--index: 4">i</span>
+        <span class="label-char" style="--index: 5">l</span>
+        <span class="label-char" style="--index: 6">s</span>
+      </label>
+      <div class="alert alert-danger mt-2" *ngIf="shippingAddress.get('details')?.errors && shippingAddress.get('details')?.dirty">
+        <p *ngIf="shippingAddress.get('details')?.getError('required')" class="m-0 p-0">Details is required</p>
+      </div>
+    </div>
+
+    <div class="wave-group my-3">
+      <input  type="password" class="input" formControlName="phone">
+      <span class="bar"></span>
+      <label class="label">
+        <span class="label-char" style="--index: 0">P</span>
+        <span class="label-char" style="--index: 1">h</span>
+        <span class="label-char" style="--index: 2">o</span>
+        <span class="label-char" style="--index: 3">n</span>
+        <span class="label-char" style="--index: 4">e</span>
+      </label>
+      <div class="alert alert-danger mt-2" *ngIf="shippingAddress.get('phone')?.errors && shippingAddress.get('phone')?.dirty">
+        <p *ngIf="shippingAddress.get('phone')?.getError('required')" class="m-0 p-0">Phone is required</p>
+      </div>
+    </div>
+
+    <div class="wave-group my-3">
+      <input  type="text" class="input" formControlName="city">
+      <span class="bar"></span>
+      <label class="label">
+        <span class="label-char" style="--index: 0">C</span>
+        <span class="label-char" style="--index: 1">i</span>
+        <span class="label-char" style="--index: 2">t</span>
+        <span class="label-char" style="--index: 3">y</span>
+      </label>
+      <div class="alert alert-danger mt-2" *ngIf="shippingAddress.get('city')?.errors && shippingAddress.get('city')?.dirty">
+        <p *ngIf="shippingAddress.get('city')?.getError('required')" class="m-0 p-0">City is required</p>
+      </div>
+    </div>
+    <button class="btn bg-main text-white " type="submit" [disabled]="shippingAddress.invalid"> <span *ngIf="!isLoading"> Pay </span>
+      <i *ngIf='isLoading' class="fa-solid fa-spinner fa-spin"></i>
+    </button>
+  </form>
+</div>
+
